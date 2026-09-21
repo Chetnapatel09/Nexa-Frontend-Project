@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexa — Analytics Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">N</span><span>Nexa</span></div>
+    <nav>
+      <a class="active" href="#dashboard">⌂ <span>Dashboard</span></a>
+      <a href="#analytics">◒ <span>Analytics</span></a>
+      <a href="#customers">♙ <span>Customers</span></a>
+      <a href="#orders">▤ <span>Orders</span></a>
+      <a href="#products">◈ <span>Products</span></a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="#settings">⚙ <span>Settings</span></a>
+      <div class="profile"><div class="avatar">CP</div><div><b>Chetna Patel</b><small>Frontend Developer</small></div></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="menu-btn" id="menuBtn">☰</button>
+      <div class="search"><span>⌕</span><input id="search" placeholder="Search dashboard..."></div>
+      <div class="top-actions">
+        <button class="icon-btn" id="themeBtn" title="Toggle theme">☾</button>
+        <button class="icon-btn">♢</button>
+        <div class="mini-avatar">CP</div>
+      </div>
+    </header>
+
+    <section id="dashboard" class="content">
+      <div class="hero">
+        <div>
+          <p class="eyebrow">MONDAY, SEPTEMBER 21, 2026</p>
+          <h1>Good afternoon, Chetna <span>✦</span></h1>
+          <p class="muted">Here's what's happening with your business today.</p>
+        </div>
+        <button class="primary" id="downloadBtn">↓ Export report</button>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card"><div class="stat-head"><span>Total Revenue</span><i>↗</i></div><strong>₹24,580</strong><p class="positive">↑ 12.8% <span>vs last month</span></p></article>
+        <article class="stat-card"><div class="stat-head"><span>Active Users</span><i>◉</i></div><strong>8,642</strong><p class="positive">↑ 8.2% <span>vs last month</span></p></article>
+        <article class="stat-card"><div class="stat-head"><span>Orders</span><i>▣</i></div><strong>1,429</strong><p class="positive">↑ 5.7% <span>vs last month</span></p></article>
+        <article class="stat-card"><div class="stat-head"><span>Conversion</span><i>⌁</i></div><strong>6.24%</strong><p class="negative">↓ 1.1% <span>vs last month</span></p></article>
+      </div>
+
+      <div class="grid-2">
+        <article class="panel chart-panel" id="analytics">
+          <div class="panel-title"><div><h2>Revenue overview</h2><p>Monthly revenue performance</p></div><select id="range"><option>Last 7 months</option><option>Last 12 months</option></select></div>
+          <canvas id="revenueChart"></canvas>
+        </article>
+        <article class="panel">
+          <div class="panel-title"><div><h2>Traffic sources</h2><p>Where your users come from</p></div><span class="more">•••</span></div>
+          <div class="donut-wrap"><canvas id="trafficChart"></canvas><div class="donut-center"><b>8.6k</b><span>Visitors</span></div></div>
+          <div class="legend">
+            <span><i></i>Direct <b>42%</b></span><span><i></i>Search <b>31%</b></span><span><i></i>Social <b>18%</b></span><span><i></i>Other <b>9%</b></span>
+          </div>
+        </article>
+      </div>
+
+      <div class="grid-2 lower">
+        <article class="panel" id="orders">
+          <div class="panel-title"><div><h2>Recent orders</h2><p>Latest customer activity</p></div><a href="#">View all →</a></div>
+          <div class="table-wrap"><table><thead><tr><th>Customer</th><th>Product</th><th>Amount</th><th>Status</th></tr></thead><tbody id="ordersBody"></tbody></table></div>
+        </article>
+        <article class="panel" id="customers">
+          <div class="panel-title"><div><h2>Top customers</h2><p>Highest value this month</p></div><span class="more">•••</span></div>
+          <div class="customer-list">
+            <div class="customer"><div class="avatar purple">AS</div><div><b>Arjun Shah</b><small>32 orders</small></div><strong>₹4,820</strong></div>
+            <div class="customer"><div class="avatar blue">RK</div><div><b>Riya Kapoor</b><small>27 orders</small></div><strong>₹3,640</strong></div>
+            <div class="customer"><div class="avatar orange">VM</div><div><b>Vikram Mehta</b><small>21 orders</small></div><strong>₹2,980</strong></div>
+            <div class="customer"><div class="avatar green">NS</div><div><b>Neha Singh</b><small>19 orders</small></div><strong>₹2,460</strong></div>
+          </div>
+        </article>
+      </div>
+
+      <section id="products" class="panel product-panel">
+        <div class="panel-title"><div><h2>Popular products</h2><p>Best performing products</p></div></div>
+        <div class="products">
+          <div class="product"><div class="product-icon">◈</div><div><b>Pro Workspace</b><small>Software · 428 sales</small></div><strong>₹12,840</strong></div>
+          <div class="product"><div class="product-icon pink">✦</div><div><b>Design Kit</b><small>Digital · 316 sales</small></div><strong>₹8,920</strong></div>
+          <div class="product"><div class="product-icon gold">◇</div><div><b>Team Plan</b><small>SaaS · 184 sales</small></div><strong>₹6,740</strong></div>
+        </div>
+      </section>
+
+      <footer>Designed & built by <b>Chetna Patel</b> · Frontend Developer Portfolio Project</footer>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
